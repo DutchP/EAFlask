@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Nova+Flat&display=swap');
 /**
 style.css 
 we will be using sass to create our css files
@@ -474,7 +475,7 @@ mark,
   color: #6c757d;
 }
 .blockquote-footer::before {
-  content: "— ";
+  content: "ï¿½ï¿½";
 }
 
 .img-fluid {
@@ -4004,6 +4005,7 @@ input[type=button].btn-block {
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
   margin-right: 1rem;
+  font-family: 'Nova Flat', sans-serif;
   font-size: 1.25rem;
   line-height: inherit;
   white-space: nowrap;
