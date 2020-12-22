@@ -7,6 +7,10 @@ app = Flask(__name__)  # creating the app
 def index():
     return render_template('index.html', Title='Home')
 
+@app.route("/EZine")
+def e_magezine():
+    return render_template("")
+
 # starting the application
 if __name__ == '__main__':
     app.run(debug=True, port=80)
