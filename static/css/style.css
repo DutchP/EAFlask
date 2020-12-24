@@ -10205,6 +10205,9 @@ h3 {
   font-size: 1.5rem;
 }
 
+.portfolio-modal .portfolio-modal-title ,h1,h2,h3,h4,h5,h6{
+  font-family: 'Nova Flat',sans-serif !important;
+}
 .portfolio-modal .portfolio-modal-title {
   font-size: 2.25rem;
   line-height: 2rem;
@@ -10284,4 +10287,7 @@ form .row:first-child .floating-label-form-group {
 
 .copyright {
  color: #fff;
+}
+.portfolio-modal-text{
+  text-align: left;
 }
