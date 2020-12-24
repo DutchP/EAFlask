@@ -71,7 +71,7 @@ body {
   line-height: 1.5;
   color:#fff ;
   text-align: left;
-   background-color:#212529;/*  */
+   background-color:#000000;/*  */
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -3931,8 +3931,8 @@ input[type=button].btn-block {
 }
 .nav-tabs .nav-link {
   border: 0.125rem solid transparent;
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
+ /* border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;*/
 }
 .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
   border-color: #e9ecef #e9ecef #dee2e6;
@@ -3954,9 +3954,9 @@ input[type=button].btn-block {
   border-top-right-radius: 0;
 }
 
-.nav-pills .nav-link {
+/*.nav-pills .nav-link {
   border-radius: 0.5rem;
-}
+}*/
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
@@ -10122,11 +10122,11 @@ h3 {
   }
   #mainNav .navbar-nav > li.nav-item > a.nav-link.active {
     color: #fff;
-    background: #1abc9c;
+    border-bottom: #1abc9c solid 0.2rem;
   }
   #mainNav .navbar-nav > li.nav-item > a.nav-link.active:active, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:focus, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:hover {
     color: #fff;
-    background: #1abc9c;
+    border-bottom: #1abc9c solid o.2rem;
   }
 
   #mainNav.navbar-shrink {
@@ -10146,7 +10146,7 @@ h3 {
   background-position: center top 72px;
   background-repeat: no-repeat;
   background-attachment: scroll;
-  background-size: contain;
+  background-size: bottom contain;
 }
 .masthead .masthead-heading {
   font-size: 2.75rem;
@@ -10154,6 +10154,7 @@ h3 {
 }
 .masthead .masthead-subheading {
   font-size: 1.25rem;
+  color:#050709;
 }
 .masthead .masthead-avatar {
   width: 15rem;
@@ -10177,8 +10178,11 @@ h3 {
   position: relative;
   display: block;
   max-width: 25rem;
-  border-radius: 0.5rem;
+  border-radius: 35rem;
   overflow: hidden;
+  /* -webkit-box-shadow: 10px 10px 0px 0px rgba(255, 249, 249, 0.356);
+  -moz-box-shadow: 10px 10px 0px 0px rgba(255, 249, 249, 0.356); */
+  box-shadow: 10px 10px 0px 0px rgba(83, 83, 83, 0.356);
 }
 .portfolio .portfolio-item .portfolio-item-caption {
   position: absolute;
@@ -10190,6 +10194,7 @@ h3 {
 }
 .portfolio .portfolio-item .portfolio-item-caption:hover {
   opacity: 1;
+  box-shadow: 10px 10px 0px 0px rgba(133, 133, 133, 0.356);
 }
 .portfolio .portfolio-item .portfolio-item-caption .portfolio-item-caption-content {
   font-size: 1.5rem;
@@ -10265,10 +10270,13 @@ form .row:first-child .floating-label-form-group {
 .footer {
   padding-top: 5rem;
   padding-bottom: 5rem;
-  background-color: #2c3e50;
+  background:linear-gradient(to bottom, rgba(38, 38, 39, 0.6) 0%, rgba(4, 5, 8, 0.6)60%);
   color: #fff;
+}
+.eanav{
+ background:linear-gradient(to bottom, rgba(38, 38, 39, 0.6) 0%, rgba(4, 5, 8, 0.6)60%) !important; 
 }
 
 .copyright {
-  background-color: #1a252f;
+ color: #fff;
 }
