@@ -10182,19 +10182,24 @@ h3 {
   overflow: hidden;
   /* -webkit-box-shadow: 10px 10px 0px 0px rgba(255, 249, 249, 0.356);
   -moz-box-shadow: 10px 10px 0px 0px rgba(255, 249, 249, 0.356); */
-  box-shadow: 10px 10px 0px 0px rgba(83, 83, 83, 0.356);
+ box-shadow: 10px 5px 0px 0px rgba(44, 44, 44, 0.356);
 }
+/*.portfolio .portfolio-item {
+  box-shadow: 10px 10px 0px 0px rgba(61, 60, 60, 0.616);
+}*/
 .portfolio .portfolio-item .portfolio-item-caption {
   position: absolute;
   top: 0;
   left: 0;
   transition: all 0.2s ease-in-out;
   opacity: 0;
+  font-family:'Nova Flat',sans-serif;
   background-color: rgba(26, 188, 156, 0.9);
+  
 }
 .portfolio .portfolio-item .portfolio-item-caption:hover {
   opacity: 1;
-  box-shadow: 10px 10px 0px 0px rgba(133, 133, 133, 0.356);
+  box-shadow: 10px 10px 0px 0px rgba(83, 83, 83, 0.356);
 }
 .portfolio .portfolio-item .portfolio-item-caption .portfolio-item-caption-content {
   font-size: 1.5rem;
