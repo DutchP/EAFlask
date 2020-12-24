@@ -10291,3 +10291,9 @@ form .row:first-child .floating-label-form-group {
 .portfolio-modal-text{
   text-align: left;
 }
+.modal-body .modal-image{
+  justify-content: center;
+  width:300px;
+  height: 250;
+  object-fit: contain;
+}
