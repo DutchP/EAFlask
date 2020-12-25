@@ -16,8 +16,13 @@ def get_cat(cat):
 
 
 @app.route("/EZine")
-def e_magezine():
-    return render_template("")
+def e_zine():
+    return render_template("e-zine.html")
+
+
+@app.route('/admin')
+def admin():
+    return render_template('admin.html')
 
 
 # starting the application
@@ -26,5 +31,5 @@ if __name__ == '__main__':
 
 # We will change this during production and create
 # a WSGI server to run it in a docker
-# This server is intended to be the api to the EvertRobles website 
+# This server is intended to be the api to the EvertRobles website
 # to provide it of the necessary data
