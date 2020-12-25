@@ -139,3 +139,14 @@ body {
 .text-red{
   color: red;
 }
+.table-responsive{
+  padding-top:cal(6rem-74px);
+   padding-bottom: 6rem;
+}
+
+.fa-glide:before {
+  content: "\f2a5";
+}
+.fa-glide-g:before {
+   content: "\f2a6";
+}

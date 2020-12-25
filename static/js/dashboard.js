@@ -22,19 +22,35 @@
       ],
       datasets: [{
         data: [
-          15,
-          13,
-          15,
-          14,
-          13,
-          12,
-          16
+          8,
+          9,
+          10,
+          18,
+          10,
+          7,
+          6
         ],
         lineTension: 0,
         backgroundColor: 'transparent',
         borderColor: '#28a745',// #007bff
         borderWidth: 4,
         pointBackgroundColor: '#28a745',//#007bff 
+      },
+      {
+        data: [
+          6,
+          7,
+          8,
+          8,
+          15,
+          5,
+          3
+        ],
+        lineTension: 0,
+        backgroundColor: 'transparent',
+        borderColor: '#dc3545',// #007bff
+        borderWidth: 4,
+        pointBackgroundColor: '#dc3545',//#007bff 
       }]
     },
     options: {
@@ -104,23 +120,89 @@
           13,
           12,
           20,
-          18,
-          10,
-          10,
-          10,
-          9,
-          9,
-          8,
-          7,
-          6,
-          4,
+          ,
+          ,
+          ,
+          ,
+          ,
+          ,
+          ,
+          ,
+          ,
+          ,
         ],
         lineTension: 0,
         backgroundColor: 'transparent',
-        borderColor: '#28a745',// #007bff
+        borderColor: '#ffc107',// #007bff
         borderWidth: 4,
-        pointBackgroundColor: '#28a745',//#007bff 
-      }]
+        pointBackgroundColor: '#ffc107',//#007bff 
+      },
+      {
+        data: [
+          3,
+          4,
+          5,
+          5,
+          5,
+          5,
+          4,
+          3,
+          2,
+          1,
+          0,
+          1,
+          2,
+          3,
+          ,
+          ,
+          ,
+          ,
+          ,
+          ,
+          ,
+          ,
+          ,
+          ,
+        ],
+        lineTension: 0,
+        backgroundColor: 'transparent',
+        borderColor: '#007bff',// #007bff
+        borderWidth: 4,
+        pointBackgroundColor: '#007bff',//#007bff 
+        },
+      {
+        data: [
+          1,
+          2,
+          3,
+          4,
+          5,
+          5,
+          5,
+          6,
+          6,
+          6,
+          7,
+          7,
+          7,
+          8,
+          ,
+          ,
+          ,
+          ,
+          ,
+          ,
+          ,
+          ,
+          ,
+          ,
+        ],
+        lineTension: 0,
+        backgroundColor: 'transparent',
+        borderColor: '#5633b6',// #007bff
+        borderWidth: 4,
+        pointBackgroundColor: '#5633b6',//#007bff 
+      },]
     },
     options: {
       scales: {
