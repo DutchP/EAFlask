@@ -107,7 +107,7 @@ body {
   color: #fff;
 }
 .main > table,tbody,thead,th,td{
-  color:#fff !important
+  color:rgb(184, 187, 189) !important
 }
 
 .footer {
@@ -123,4 +123,19 @@ body {
 
 .copyright {
  color: #fff;
+}
+.canvas-container{
+  width: 50%;
+  height: 50%;
+  object-fit: cover;
+  object-position: top center;
+}
+.bg-black{
+  background-color:black;
+}
+.h2-x{
+  color:#28a745;
+}
+.text-red{
+  color: red;
 }
