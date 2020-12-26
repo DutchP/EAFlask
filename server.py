@@ -9,20 +9,25 @@ def index():
     return render_template('index.html', Title='Home')
 
 
-@app.route('/<string:cat>')
-def get_cat(cat):
-    print(cat)
-    return render_template('index.html', Title='cat')
+@app.route('/<string:category>')
+def get_cat(category):
+    print(category)
+    return render_template('index.html', Title='category')
 
 
 @app.route("/EZine")
 def e_zine():
-    return render_template("e-zine.html")
+    return render_template("ezine.html", Title='ezine')
 
 
 @app.route('/admin')
 def admin():
-    return render_template('admin.html')
+    return render_template('admin/admin.html', Title="admin")
+
+
+@app.route('/admin/ezine')
+def admin_ezine():
+    return render_template('admin/ezine/ezine.html', Title='create zine')
 
 
 # starting the application
