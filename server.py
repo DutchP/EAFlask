@@ -30,6 +30,11 @@ def admin_ezine():
     return render_template('admin/ezine/ezine.html', Title='create zine')
 
 
+@app.route('/admin/upload')
+def admin_upload():
+    return render_template('admin/upload/upload.html', Title='upload images')
+
+
 # starting the application
 if __name__ == '__main__':
     app.run(debug=True, port=80)

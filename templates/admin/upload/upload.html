@@ -1,0 +1,55 @@
+{%extends 'layouts/admin-layout.html'%}
+{%block styling%}
+<link rel="stylesheet" href="/static/css/dashboard.css">
+<link rel="stylesheet" href="/static/css/ezine.css" />
+{%endblock%}
+{%block content%}
+<div class="container-fluid admin-container pt-4 pb-4">
+    <div class="row">
+        {%include '/includes/admin.nav.html'%}
+        <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 e-zine-head ">
+            <h3>Create your ezine article from here</h3>
+            <form>
+                <div id='text-input'>
+                    <div class="form-group ">
+                        <input type="text" class="form-control image-name-input" name="image name" id="image_name"
+                            placeholder=" Image Name">
+                    </div>
+                    <div class="form-group">
+
+                        <select name="" id="category-select" class="form-control">
+                            <option value="">Select Category</option>
+                        </select>
+                    </div>
+                    <div class="custom-file form-group">
+                        <input type="file" class="custom-file-input" id="customFile">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label for="image-text"></label>
+                        <textarea name="" id="image-text" class="form-control" cols="60" rows="10">
+
+                        </textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </div>
+            </form>
+        </main>
+    </div>
+</div>
+{%endblock%}
+{%block scripting%}
+<script>
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function () {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+    $(".image-name-input").on("change", function () {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".image-name-label").addClass("selected").html(fileName);
+    });
+</script>
+
+<script src="/static/js/dashboard.js"></script>
+{%endblock%}
