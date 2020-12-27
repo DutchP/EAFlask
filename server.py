@@ -60,8 +60,6 @@ def login():
         password = request.form.get("password")
         if password == os.environ.get("USER_PASSWORD") and username == os.environ.get('USER_NAME'):
             return redirect(url_for('admin'))
-    # print(os.environ.get('USER_NAME'))
-    # print(os.environ.get('USER_PASSWORD'))
     return render_template('login.html')
 
 
