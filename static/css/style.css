@@ -10298,3 +10298,27 @@ form .row:first-child .floating-label-form-group {
   height: 250;
   object-fit: contain;
 }
+
+.admin-modal .admin-modal-title ,h1,h2,h3,h4,h5,h6{
+  font-family: 'Nova Flat',sans-serif !important;
+}
+.admin-modal .admin-modal-title {
+  font-size: 2.25rem;
+  line-height: 2rem;
+}
+@media (min-width: 992px) {
+  .admin-modal .admin-modal-title {
+    font-size: 3rem;
+    line-height: 2.5rem;
+  }
+}
+.admin-modal .close {
+  position: absolute;
+  z-index: 1;
+  right: 1.5rem;
+  top: 1rem;
+  font-size: 3rem;
+  line-height: 3rem;
+  color: #1abc9c;
+  opacity: 1;
+}
