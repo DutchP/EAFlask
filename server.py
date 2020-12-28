@@ -1,10 +1,10 @@
 from flask import Flask, session, render_template, request, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
+from models import Article, db
 import os
 
 app = Flask(__name__)  # creating the app
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///development.db' #os.environ.get('DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['MAIL_SERVER'] = os.environ.get("MAIL_SERVER")
 app.config['MAIL_PORT'] = 465
@@ -13,7 +13,7 @@ app.config['MAIL_USE_SSL'] = True
 app.config['MAIL_USERNAME'] = os.environ.get("MAIL_USERNAME")
 app.config['MAIL_PASSWORD'] = os.environ.get("MAIL_PASSWORD")
 
-db = SQLAlchemy(app)
+db.init_app(app)
 
 
 class Config(object):
@@ -84,7 +84,9 @@ def admin_ezine():
         subject = request.form.get('subject')
         body = request.form.get('body')
         if not subject == '' and not body == '':
-            print('%s,%s' % (subject, body))
+            article = Article(subject,body)
+            db.session.add(article)
+            db.session.commit()
     return render_template('admin/ezine/ezine.html', Title='create zine')
 
 
@@ -104,6 +106,7 @@ if __name__ == '__main__':
 # to provide it of the necessary data
 # This development server can be started with 'py server.py'
 # it will run on port 80 and will be reached globally from with you network
+
 # create a flaskenv file to hold the following attributes
 # DEBUG=True
 # FLASK_ENV=development
