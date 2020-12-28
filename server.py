@@ -104,3 +104,22 @@ if __name__ == '__main__':
 # to provide it of the necessary data
 # This development server can be started with 'py server.py'
 # it will run on port 80 and will be reached globally from with you network
+# create a flaskenv file to hold the following attributes
+# DEBUG=True
+# FLASK_ENV=development
+# FLASK_APP=server.py
+# APP_SETTINGS=FLASK_APP.configuration.config.DevelopmentConfig
+# DATABASE_URL = '##############'
+# USER_NAME = EAFlask
+# USER_PASSWORD = ########
+# SECRET_KEY= '#######'
+# MAIL_SERVER='############'
+# MAIL_PORT = 465
+# MAIL_USE_TLS = False
+# MAIL_USE_SSL = True
+# MAIL_USERNAME = '###############'
+# MAIL_PASSWORD = '##############'
+# SESSION_COOKIE_SECURE = True
+# SESSION_COOKIE_HTTPONLY = True
+# SESSION_COOKIE_SAMESITE = 'None'
+# CSRF_ENABLED = True
