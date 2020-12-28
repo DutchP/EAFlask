@@ -9,21 +9,27 @@
         {%include '/includes/admin.nav.html'%}
         <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 e-zine-head ">
             <h3>Create your ezine article from here</h3>
-            <form>
-
+            <form method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="subject" placeholder="Subject">
+                </div>
+                <div class="form-group">
+                    <textarea id="non-editor" class="form-control text-black-50  rounded" name="body" rows="20"
+                        placeholder="Body Text"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send</button>
             </form>
         </main>
     </div>
 </div>
 {%endblock%}
 {%block scripting%}
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
-    // Add the following code if you want the name of the file appear on select
-    $(".custom-file-input").on("change", function () {
-        var fileName = $(this).val().split("\\").pop();
-        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    tinymce.init({
+        selector: 'textarea#editor',
+        menubar: false
     });
 </script>
-
 <script src="/static/js/dashboard.js"></script>
 {%endblock%}

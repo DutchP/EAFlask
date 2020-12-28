@@ -1,32 +1,31 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, session, render_template, request, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
 import os
 
 app = Flask(__name__)  # creating the app
+app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['MAIL_SERVER'] = os.environ.get("MAIL_SERVER")
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+app.config['MAIL_USERNAME'] = os.environ.get("MAIL_USERNAME")
+app.config['MAIL_PASSWORD'] = os.environ.get("MAIL_PASSWORD")
+
+db = SQLAlchemy(app)
 
 
 class Config(object):
     DEBUG = False
     TESTING = False
-    # CSRF_ENABLED = True
-    # SQLALCHEMY_TRACK_MODIFICATIONS = False
-    # SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
-    # TWITTER_OAUTH_CLIENT_KEY = os.environ.get("TWITTER_OAUTH_CLIENT_KEY")
-    # TWITTER_OAUTH_CLIENT_SECRET = os.environ.get("TWITTER_OAUTH_CLIENT_SECRET")
-    # SESSION_COOKIE_SECURE = True
-    # SESSION_COOKIE_HTTPONLY = True
-    # SESSION_COOKIE_SAMESITE = 'None'
-    # MAIL_SERVER = 'smtp.gmail.com'
-    # MAIL_PORT = 465
-    # MAIL_USE_TLS = False
-    # MAIL_USE_SSL = True
-    # MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
-    # MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
+    SECRET_KEY = os.environ.get("SECRET_KEY")
 
 
 class DevelopmentConfig(Config):
     ENV = "development"
     DEVELOPMENT = True
-    SECRET_KEY = "secret_for_test_environment"
+    SECRET_KEY = os.environ.get("SECRET_KEY")
 
 
 # Dashboard namespace
@@ -55,12 +54,21 @@ def e_zine():
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
+    if 'username' in session:
+        return redirect(url_for('admin'))
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get("password")
         if password == os.environ.get("USER_PASSWORD") and username == os.environ.get('USER_NAME'):
+            session['username'] = username
             return redirect(url_for('admin'))
     return render_template('login.html')
+
+
+@app.route('/logout')
+def logout():
+    session.pop('username')
+    return redirect(url_for('index', Title='index'))
 
 
 @app.route('/admin')
@@ -69,9 +77,14 @@ def admin():
     return render_template('admin/admin.html', Title="admin")
 
 
-@app.route('/admin/ezine')
+@app.route('/admin/ezine', methods=['POST', 'GET'])
 def admin_ezine():
     '''We can edit the ezine from here'''
+    if request.method == "POST":
+        subject = request.form.get('subject')
+        body = request.form.get('body')
+        if not subject == '' and not body == '':
+            print('%s,%s' % (subject, body))
     return render_template('admin/ezine/ezine.html', Title='create zine')
 
 
