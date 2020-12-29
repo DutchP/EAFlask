@@ -1,7 +1,7 @@
 from flask import Flask, session, render_template, request, redirect, url_for
-from models import Article, db
+from models import Article, Image, db
 import os
-
+from datetime import datetime
 app = Flask(__name__)  # creating the app
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///development.db' #os.environ.get('DATABASE_URL')
@@ -47,7 +47,8 @@ def get_cat(category):
 @app.route("/EZine")
 def e_zine():
     '''Ezine from the front page'''
-    return render_template("ezine.html", Title='ezine')
+    articles = Article.query.all()
+    return render_template("ezine.html", Title='ezine',articles=articles)
 
 # admin namespace
 
@@ -68,18 +69,22 @@ def login():
 @app.route('/logout')
 def logout():
     session.pop('username')
-    return redirect(url_for('index', Title='index'))
+    return redirect(url_for('index'))
 
 
 @app.route('/admin')
 def admin():
     ''' admin gives a dashboard to work with'''
+    if not 'username' in session:
+        return redirect(url_for('login'))
     return render_template('admin/admin.html', Title="admin")
 
 
 @app.route('/admin/ezine', methods=['POST', 'GET'])
 def admin_ezine():
     '''We can edit the ezine from here'''
+    if not 'username' in session:
+        return redirect(url_for('login'))
     if request.method == "POST":
         subject = request.form.get('subject')
         body = request.form.get('body')
@@ -90,9 +95,33 @@ def admin_ezine():
     return render_template('admin/ezine/ezine.html', Title='create zine')
 
 
-@app.route('/admin/upload')
+@app.route('/admin/upload',methods=['POST','GET'])
 def admin_upload():
     ''' We can upload images from here'''
+    if not 'username' in session:
+        return redirect(url_for('login'))
+    if request.method == "POST":
+    
+        if request.files:
+
+            image = request.files["image"]
+            
+            if image.filename == "":
+                print("No filename")
+                return redirect(request.url)
+            else:
+                category  = request.form.get('category')
+                if category == '':
+                    return False
+                date_created  = datetime.strptime(request.form.get('date-created'), '%Y-%M-%d')
+                description = request.form.get("description")
+                filename = image.filename.split('.',1)[0]
+                ext = image.filename.rsplit('.',1)[1]
+                image_url = f"/static/assets/img/{category}/{image.filename}"
+                save_path = os.path.join(os.getcwd(),image_url)
+                image = Image(filename,category,image_url,date_created,description)
+                db.session.add(image)
+                db.session.commit()
     return render_template('admin/upload/upload.html', Title='upload images')
 
 
