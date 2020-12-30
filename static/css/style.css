@@ -10143,10 +10143,10 @@ h3 {
   }
 }
 .masthead {
-  padding-top: calc(6rem + 74px);
-  padding-bottom: 6rem;
-  background-color: #212529 ;
-  background: url("/static/assets/img/synchonosity.jpg");
+ /* padding-top:1rem ;calc(6rem + 74px)
+  padding-bottom: 6rem;*/
+   background-color:#000;/*#212529  */
+  /* background: url("/static/assets/img/synchonosity.jpg"); */
   /*H:\-website\website\public\assets\images\dave-hoefler-U-Dhokv9iXk-unsplash.jpg #linear-gradient(to bottom, rgba(106, 133, 190, 0.6) 0%, rgba(106, 133, 190, 0.6)40%),*/
   background-position: center top 72px;
   background-repeat: no-repeat;
@@ -10167,7 +10167,7 @@ h3 {
 
 @media (min-width: 992px) {
   .masthead {
-    padding-top: calc(6rem + 104px);
+    padding-top: calc(0.5rem + 82px);
     padding-bottom: 6rem;
   }
   .masthead .masthead-heading {
