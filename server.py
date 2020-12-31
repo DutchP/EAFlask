@@ -28,7 +28,7 @@ class DevelopmentConfig(Config):
     SECRET_KEY = os.environ.get("SECRET_KEY")
 
 
-# Dashboard namespace
+# index images
 IMAGES = [
     {'url':"/static/assets/img/portfolio/sandex.jpg"},
     {'url':"/static/assets/img/portfolio/pathfinder.jpg"},
