@@ -29,12 +29,20 @@ class DevelopmentConfig(Config):
 
 
 # Dashboard namespace
-
+IMAGES = [
+    {'url':"/static/assets/img/portfolio/sandex.jpg"},
+    {'url':"/static/assets/img/portfolio/pathfinder.jpg"},
+    {'url':"/static/assets/img/portfolio/metal-secrets.jpg"},
+    {'url':"/static/assets/img/portfolio/synchonosity.jpg"},
+    {'url':"/static/assets/img/portfolio/unfolding-evolution.jpg"},
+    {'url':"/static/assets/img/portfolio/wheel-of-fortune.jpg"}
+]
+       
 
 @app.route("/")
 def index():
     ''' Index route'''
-    return render_template('index.html', Title='Home')
+    return render_template('index.html', Title='Home',images=IMAGES)
 
 
 @app.route('/<string:category>')

@@ -100,74 +100,20 @@
 </header>
 <!-- Portfolio Section-->
 <section class="page-section portfolio" id="portfolio">
-    <div class="container">
+    <div class="container align-content-center">
         <!-- Portfolio Section Heading-->
         <h2 class="page-section-heading text-center text-uppercase text-white mb-3">Portfolio</h2>
-        <!-- Icon Divider
-        <div class="divider-custom">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-            <div class="divider-custom-line"></div>
-        </div>-->
         <!-- Portfolio Grid Items-->
-        <div class="row">
-            <!-- Portfolio Item 1-->
-            <div class="col-lg-6 col-md-4 col-4 mb-5">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-
-                        <div class="portfolio-item-caption-content text-center text-white">Paintings</div>
-
-                    </div>
-                    <img class="img-fluid" src="/static/assets/img/portfolio/sandex.jpg" alt="" />
+        {%for image in images%}
+        <div class=" col-lg-3 col-md-4 d-inline-flex p-2">
+            <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal4">
+                <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                    <div class="portfolio-item-caption-content text-center text-white">Graphic Art</div>
                 </div>
-            </div>
-            <!-- Portfolio Item 2-->
-            <div class=" col-lg-6 col-md-4 col-4 mb-5">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal2">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white">Drawings</div>
-                    </div>
-                    <img class="img-fluid" src="/static/assets/img/portfolio/pathfinder.jpg" alt="" />
-                </div>
-            </div>
-            <!-- Portfolio Item 3-->
-            <div class=" col-lg-6 col-md-4 col-4 mb-5 ">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal3">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white">Photography</div>
-                    </div>
-                    <img class="img-fluid" src="/static/assets/img/portfolio/metal-secrets.jpg" alt="" />
-                </div>
-            </div>
-            <!-- Portfolio Item 4-->
-            <div class=" col-lg-6 col-md-4 col-4 mb-5 ">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal4">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white">Graphic Art</div>
-                    </div>
-                    <img class="img-fluid" src="/static/assets/img/portfolio/synchonosity.jpg" alt="" />
-                </div>
-            </div>
-            <!-- Portfolio Item 5-->
-            <div class=" col-lg-6 col-md-4 col-4 mb-5 ">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal5">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white">Collaborations</div>
-                    </div>
-                    <img class="img-fluid" src="/static/assets/img/portfolio/unfolding-evolution.jpg" alt="" />
-                </div>
-            </div>
-            <!-- Portfolio Item 6-->
-            <div class=" col-lg-6 col-md-4 col-4 mb-5 ">
-                <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal6">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white">Other</div>
-                    </div>
-                    <img class="img-fluid" src="/static/assets/img/portfolio/wheel-of-fortune.jpg" alt="" />
-                </div>
+                <img class="img-fluid" src="{{image.url}}" alt="" />
             </div>
         </div>
+        {%endfor%}
     </div>
 </section>
 <!-- About Section-->

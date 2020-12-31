@@ -167,7 +167,7 @@ sup {
 a {
   color: #1abc9c;
   text-decoration: none;
-  background-color: transparent;
+  /* background-color: transparent; */
 }
 a:hover {
   color: #117964;
@@ -4011,6 +4011,7 @@ input[type=button].btn-block {
   line-height: inherit;
   white-space: nowrap;
 }
+
 .navbar-brand:hover, .navbar-brand:focus {
   text-decoration: none;
 }
