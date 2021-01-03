@@ -1,7 +1,9 @@
 from flask import Flask, session, render_template, request, redirect, url_for
+from werkzeug.utils import secure_filename
 from models import Article, Image, db
 import os
 from datetime import datetime
+
 app = Flask(__name__)  # creating the app
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///development.db' #os.environ.get('DATABASE_URL')
@@ -128,11 +130,18 @@ def admin_upload():
                 description = request.form.get("description")
                 filename = image.filename.split('.',1)[0]
                 ext = image.filename.rsplit('.',1)[1]
-                image_url = f"/static/assets/img/{category}/{image.filename}"
-                save_path = os.path.join(os.getcwd(),image_url)
-                image = Image(filename,category,image_url,date_created,description)
-                db.session.add(image)
-                db.session.commit()
+                # create the directory for the files if they don't yet exist
+                image_path = f"\static\\assets\img\{category}"
+                image_url=os.path.join(image_path)
+                uploads_dir = os.path.join(app.root_path+image_url)
+                os.makedirs(uploads_dir,exist_ok=True)
+                
+                # save_path = os.path.join(os.getcwd(),image_url)
+                # up_image = Image(filename,category,image_url,date_created,description)
+                image_name= secure_filename(image.filename)
+                print(uploads_dir)
+                # db.session.add(image)
+                # db.session.commit()
                 # oke the name is beeing send to the database along with 
                 # the proper date and image path
                 # The only tyhing left to do here is to save the image to it's location
