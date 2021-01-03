@@ -107,14 +107,16 @@ def admin_ezine():
 @app.route('/admin/upload',methods=['POST','GET'])
 def admin_upload():
     ''' We can upload images from here'''
+    # You can only get here if you're properly authenticated
     if not 'username' in session:
         return redirect(url_for('login'))
+    # Check to see if the request is of type POST
     if request.method == "POST":
-    
+        # Check if files are added 
         if request.files:
-
+            # Get the image from the request
             image = request.files["image"]
-            
+            # Check if the image has a name and extension 
             if image.filename == "":
                 print("No filename")
                 return redirect(request.url)
@@ -136,6 +138,7 @@ def admin_upload():
                 # The only tyhing left to do here is to save the image to it's location
                 # but first we will do something about the look that seems to 
                 # be of more importance to the owner than how this thing actually works
+                # we can save the image by adding it to a path
     return render_template('admin/upload/upload.html', Title='upload images')
 
 
