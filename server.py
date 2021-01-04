@@ -142,12 +142,7 @@ def admin_upload():
                 print(uploads_dir)
                 # db.session.add(image)
                 # db.session.commit()
-                # oke the name is beeing send to the database along with 
-                # the proper date and image path
-                # The only tyhing left to do here is to save the image to it's location
-                # but first we will do something about the look that seems to 
-                # be of more importance to the owner than how this thing actually works
-                # we can save the image by adding it to a path
+                
     return render_template('admin/upload/upload.html', Title='upload images')
 
 
