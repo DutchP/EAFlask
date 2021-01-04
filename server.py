@@ -135,14 +135,7 @@ def admin_upload():
                 ext = image.filename.rsplit('.',1)[1]
                 # create the directory for the files if they don't yet exist
                 image_path = f"/{category}/"
-                # image_url=os.path.join(image_path)
-                #  uploads_dir = os.path.join(app.config['UPLOAD_FOLDER']+image_url)
-                # os.makedirs(uploads_dir,exist_ok=True)
-                
-                # save_path = os.path.join(os.getcwd(),image_url)
-                # up_image = Image(filename,category,image_url,date_created,description)
-                # upload_image= secure_filename(image.filename)
-                # image_dir = uploads_dir
+                # now we can save the image 
                 image.save(os.path.join(os.path.join(app.config['UPLOAD_FOLDER']+image_path),
                            secure_filename(image.filename)))
                 print('image uploaded')
@@ -154,7 +147,7 @@ def admin_upload():
 
 # starting the application
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=80)
+    app.run(host='0.0.0.0',debug=True, port=80)
 
 # We will change this during production and create
 # a WSGI server to run it in a docker
