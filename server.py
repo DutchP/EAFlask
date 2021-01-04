@@ -4,11 +4,14 @@ from models import Article, Image, db
 import os
 from datetime import datetime
 
+UPLOAD_FOLDER = '/-website/EAFlask/static/assets/img'
+
 app = Flask(__name__)  # creating the app
-app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
+app.config['SECRET_KEY'] = 'secret!'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///development.db' #os.environ.get('DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['MAIL_SERVER'] = os.environ.get("MAIL_SERVER")
+app.config['UPLOAD_FOLDER']= UPLOAD_FOLDER
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
@@ -131,15 +134,18 @@ def admin_upload():
                 filename = image.filename.split('.',1)[0]
                 ext = image.filename.rsplit('.',1)[1]
                 # create the directory for the files if they don't yet exist
-                image_path = f"\static\\assets\img\{category}"
-                image_url=os.path.join(image_path)
-                uploads_dir = os.path.join(app.root_path+image_url)
-                os.makedirs(uploads_dir,exist_ok=True)
+                image_path = f"/{category}/"
+                # image_url=os.path.join(image_path)
+                #  uploads_dir = os.path.join(app.config['UPLOAD_FOLDER']+image_url)
+                # os.makedirs(uploads_dir,exist_ok=True)
                 
                 # save_path = os.path.join(os.getcwd(),image_url)
                 # up_image = Image(filename,category,image_url,date_created,description)
-                image_name= secure_filename(image.filename)
-                print(uploads_dir)
+                # upload_image= secure_filename(image.filename)
+                # image_dir = uploads_dir
+                image.save(os.path.join(os.path.join(app.config['UPLOAD_FOLDER']+image_path),
+                           secure_filename(image.filename)))
+                print('image uploaded')
                 # db.session.add(image)
                 # db.session.commit()
                 
@@ -148,7 +154,7 @@ def admin_upload():
 
 # starting the application
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True, port=80)
+    app.run(host='127.0.0.1', port=80)
 
 # We will change this during production and create
 # a WSGI server to run it in a docker
