@@ -5,10 +5,37 @@
 {%endblock%}
 {%block content%}
 {%include 'includes/nav.html'%}
-<div class="container mt-5">
+<div class="container mt-5 p-1">
     <div class="ezine-head">
         <h1>Ezine</h1>
+        {%for article in articles%}
+        <div class="card mb-1">
+            <div class="card-header text-black">
+                <h5>{{article.subject}}</h5>
+            </div>
+            <div class="card-body text-black">
+                {{article.body}}
+            </div>
+            <div class="card-footer text-black">
+                {{article.date_created}}
+            </div>
+
+        </div>
+        {%endfor%}
     </div>
 
 </div>
+{%endblock%}
+{%block scripting%}
+
+<script>
+    var mylink = document.querySelector('a#ezine');
+    window.onload = ()=>{
+        
+        mylink.classList.add('active');
+    }
+    window.onunload = ()=>{
+        mylink.classList.remove('active');
+    }
+</script>
 {%endblock%}
