@@ -17,9 +17,12 @@
                         <input type="text" class="form-control" name="image-name" id="image_name"
                             placeholder="Image Name">
                     </div> -->
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="file_name" name="image_name" placeholder="Name of the image">
+                    </div>
                     <div class="form-group mb-3">
                         <!-- <label for="category-select">Category</label> -->
-                        <select name="category" id="category" class="form-control-sm">
+                        <select name="category" id="category" class="form-control">
                             <option class="form-control" value=''>Image Category</option>
                             <option class="form-control" value="paintings">Paintings</option>
                             <option class="form-control" value="drawings">Drawings</option>
@@ -29,12 +32,12 @@
                         </select>
                     </div>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile" name="image">
+                        <input type="file" class="custom-file-input custom-control-inline" id="customFile" name="image">
                         <label class="custom-file-label" for="customFile">Choose Image</label>
                     </div>
                     <div class="form-group mt-3 mb-3">
                         <!-- <label for="dateCreated" class="col-form-label">Date created</label> -->
-                        <input type="date" name="date-created" id="dateCreated" class="custom-select">
+                        <input type="date" name="date-created" id="dateCreated" class="form-control-sm">
                     </div>
                     <!--Textarea with icon prefix-->
                     <div class="form-group controls mb-0 pb-2 mb-2">
