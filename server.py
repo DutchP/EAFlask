@@ -17,6 +17,9 @@ app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 app.config['MAIL_USERNAME'] = os.environ.get("MAIL_USERNAME")
 app.config['MAIL_PASSWORD'] = os.environ.get("MAIL_PASSWORD")
+app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["JPEG", "JPG", "PNG", "GIF"]
+app.config["MAX_IMAGE_FILESIZE"] = 0.5 * 1024 * 1024
+
 
 db.init_app(app)
 
@@ -43,6 +46,17 @@ IMAGES = [
     {'url':"/static/assets/img/portfolio/wheel-of-fortune.jpg"}
 ]
        
+def allowed_image(filename):
+    
+    if not "." in filename:
+        return False
+
+    ext = filename.rsplit(".", 1)[1]
+
+    if ext.upper() in app.config["ALLOWED_IMAGE_EXTENSIONS"]:
+        return True
+    else:
+        return False
 
 @app.route("/")
 def index():
@@ -131,30 +145,23 @@ def admin_upload():
                     return False
                 date_created  = datetime.strptime(request.form.get('date-created'), '%Y-%M-%d')
                 description = request.form.get("description")
-                filename = image.filename.split('.',1)[0]
-                ext = image.filename.rsplit('.',1)[1]
-                # create the directory for the files if they don't yet exist
-                image_path = f"/{category}/"
-                # now we can save the image 
-                image.save(os.path.join(os.path.join(app.config['UPLOAD_FOLDER']+image_path),
-                           secure_filename(image.filename)))
-                print('image uploaded')
-                # db.session.add(image)
-                # db.session.commit()
-                
+                image_name = request.get("image_name")
+                if allowed_image(filename=image.filename):
+                    filename = secure_filename(image.filename)
+                    # create the directory for the files if they don't yet exist
+                    image_path = f"/{category}/"
+                    image_url = '/static/assets/img'+image_path
+                    # now we can save the image 
+                    image.save(os.path.join(os.path.join(app.config['UPLOAD_FOLDER']+image_path),filename))
+                    print('image uploaded')
+                    upload_image = Image(image_name,category,image_url,date_created,description)
+                    db.session.add(upload_image)
+                    db.session.commit()
     return render_template('admin/upload/upload.html', Title='upload images')
-
 
 # starting the application
 if __name__ == '__main__':
     app.run(host='0.0.0.0',debug=True, port=80)
-
-# We will change this during production and create
-# a WSGI server to run it in a docker
-# This server is intended to be the api to the EvertRobles website
-# to provide it of the necessary data
-# This development server can be started with 'py server.py'
-# it will run on port 80 and will be reached globally from with you network
 
 # create a flaskenv file to hold the following attributes
 # DEBUG=True
