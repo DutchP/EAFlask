@@ -2393,3 +2393,5 @@ Lib/site-packages/python_dotenv-0.15.0.dist-info/METADATA
 Lib/site-packages/python_dotenv-0.15.0.dist-info/RECORD
 Lib/site-packages/python_dotenv-0.15.0.dist-info/top_level.txt
 Lib/site-packages/python_dotenv-0.15.0.dist-info/WHEEL
+.vscode/settings.json
+__pycache__/models.cpython-38.pyc
