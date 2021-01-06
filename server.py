@@ -4,14 +4,14 @@ from models import Article, Image, db
 import os
 from datetime import datetime
 
-UPLOAD_FOLDER = r'/-website/EAFlask/EAFlask/static/assets/img' #D:\-website\EAFlask\EAFlask\server.py
+UPLOAD_FOLDER = r'./static/assets/img' #D:\-website\EAFlask\EAFlask\server.py
 
 app = Flask(__name__)  # creating the app
 app.config['SECRET_KEY'] = 'secret!'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///development.db' #os.environ.get('DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['MAIL_SERVER'] = os.environ.get("MAIL_SERVER")
-app.config['UPLOAD_FOLDER']= UPLOAD_FOLDER
+app.config['IMAGE_UPLOADS']= UPLOAD_FOLDER
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
@@ -152,12 +152,11 @@ def admin_upload():
                     image_path = f"/{category}/"
                     image_url = '/static/assets/img'
                     # now we can save the image 
-                    image.save(secure_filename(image.filename))
-                    # print('image uploaded')
+                    image.save(os.path.join(app.config['IMAGE_UPLOADS'],secure_filename(image.filename)))
+                    print('image uploaded')
                     upload_image = Image(image_name,category,image_url,date_created,description)
                     db.session.add(upload_image)
                     db.session.commit()
-                    # print(image_url)
     return render_template('admin/upload/upload.html', Title='upload images')
 
 # starting the application
