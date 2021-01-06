@@ -4,7 +4,7 @@ from models import Article, Image, db
 import os
 from datetime import datetime
 
-UPLOAD_FOLDER = '/-website/EAFlask/static/assets/img'
+UPLOAD_FOLDER = r'/-website/EAFlask/EAFlask/static/assets/img' #D:\-website\EAFlask\EAFlask\server.py
 
 app = Flask(__name__)  # creating the app
 app.config['SECRET_KEY'] = 'secret!'
@@ -145,18 +145,19 @@ def admin_upload():
                     return False
                 date_created  = datetime.strptime(request.form.get('date-created'), '%Y-%M-%d')
                 description = request.form.get("description")
-                image_name = request.get("image_name")
-                if allowed_image(filename=image.filename):
+                image_name = request.form.get("image_name")
+                if allowed_image(image.filename):
                     filename = secure_filename(image.filename)
                     # create the directory for the files if they don't yet exist
                     image_path = f"/{category}/"
-                    image_url = '/static/assets/img'+image_path
+                    image_url = '/static/assets/img'
                     # now we can save the image 
-                    image.save(os.path.join(os.path.join(app.config['UPLOAD_FOLDER']+image_path),filename))
-                    print('image uploaded')
+                    image.save(secure_filename(image.filename))
+                    # print('image uploaded')
                     upload_image = Image(image_name,category,image_url,date_created,description)
                     db.session.add(upload_image)
                     db.session.commit()
+                    # print(image_url)
     return render_template('admin/upload/upload.html', Title='upload images')
 
 # starting the application
