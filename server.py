@@ -78,8 +78,6 @@ def e_zine():
     return render_template("ezine.html", Title='ezine',articles=articles)
 
 # admin namespace
-
-
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     if 'username' in session:
@@ -147,9 +145,7 @@ def admin_upload():
                 description = request.form.get("description")
                 image_name = request.form.get("image_name")
                 if allowed_image(image.filename):
-                    filename = secure_filename(image.filename)
                     # create the directory for the files if they don't yet exist
-                    image_path = f"/{category}/"
                     image_url = '/static/assets/img'
                     # now we can save the image 
                     image.save(os.path.join(app.config['IMAGE_UPLOADS'],secure_filename(image.filename)))
@@ -162,23 +158,3 @@ def admin_upload():
 # starting the application
 if __name__ == '__main__':
     app.run(host='0.0.0.0',debug=True, port=80)
-
-# create a flaskenv file to hold the following attributes
-# DEBUG=True
-# FLASK_ENV=development
-# FLASK_APP=server.py
-# APP_SETTINGS=FLASK_APP.configuration.config.DevelopmentConfig
-# DATABASE_URL = '##############'
-# USER_NAME = EAFlask
-# USER_PASSWORD = ########
-# SECRET_KEY= '#######'
-# MAIL_SERVER='############'
-# MAIL_PORT = 465
-# MAIL_USE_TLS = False
-# MAIL_USE_SSL = True
-# MAIL_USERNAME = '###############'
-# MAIL_PASSWORD = '##############'
-# SESSION_COOKIE_SECURE = True
-# SESSION_COOKIE_HTTPONLY = True
-# SESSION_COOKIE_SAMESITE = 'None'
-# CSRF_ENABLED = True
