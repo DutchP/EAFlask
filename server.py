@@ -5,14 +5,14 @@ import os
 from datetime import datetime
 
 GALLERY_FOLDER='/static/assets/img/gallery'
-UPLOAD_FOLDER = os.curdir+GALLERY_FOLDER #./static/assets/img/gallery
+IMAGE_UPLOADS = os.curdir+GALLERY_FOLDER #./static/assets/img/gallery
 
 app = Flask(__name__)  # creating the app
 app.config['SECRET_KEY'] = 'secret!'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///development.db' #os.environ.get('DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['MAIL_SERVER'] = os.environ.get("MAIL_SERVER")
-app.config['IMAGE_UPLOADS']= UPLOAD_FOLDER
+app.config['IMAGE_UPLOADS']= IMAGE_UPLOADS
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
@@ -39,12 +39,30 @@ class DevelopmentConfig(Config):
 
 # index images
 IMAGES = [
-    {'url':"/static/assets/img/portfolio/sandex.jpg"},
-    {'url':"/static/assets/img/portfolio/pathfinder.jpg"},
-    {'url':"/static/assets/img/portfolio/metal-secrets.jpg"},
-    {'url':"/static/assets/img/portfolio/synchonosity.jpg"},
-    {'url':"/static/assets/img/portfolio/unfolding-evolution.jpg"},
-    {'url':"/static/assets/img/portfolio/wheel-of-fortune.jpg"}
+    {
+        'url':"/static/assets/img/portfolio/sandex.jpg",
+        'category':'paintings'
+    },
+    {
+        'url':"/static/assets/img/portfolio/pathfinder.jpg",
+        'category':'drawings'
+    },
+    {
+        'url':"/static/assets/img/portfolio/metal-secrets.jpg",
+        'category':'collaborations'
+    },
+    {
+        'url':"/static/assets/img/portfolio/synchonosity.jpg",
+        'category':'paintings'
+    },
+    {
+        'url':"/static/assets/img/portfolio/unfolding-evolution.jpg",
+        'category':'paintings'
+    },
+    {
+        'url':"/static/assets/img/portfolio/wheel-of-fortune.jpg",
+        'category':'paintings'
+    }
 ]
        
 def allowed_image(filename):
@@ -65,12 +83,16 @@ def index():
     return render_template('index.html', Title='Home',images=IMAGES)
 
 
-@app.route('/<string:category>')
-def get_cat(category):
-    '''category route'''
-    print(category)
-    return render_template('index.html', Title='category')
-
+@app.route('/gallery',methods=['GET'])
+def gallery():
+    ''' Gallery of the application'''
+    category= request.args.get('category')
+    if category == None:
+        category = 'paintings'
+        images = Image.query.filter_by(category=category).all()
+        return render_template('gallery.html',images=images)
+    images = Image.query.filter_by(category=category).all()
+    return render_template('gallery.html',images=images)
 
 @app.route("/EZine")
 def e_zine():
