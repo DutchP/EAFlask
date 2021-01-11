@@ -53,15 +53,15 @@ IMAGES = [
     },
     {
         'url':"/static/assets/img/portfolio/synchonosity.jpg",
-        'category':'paintings'
+        'category':'other'
     },
     {
         'url':"/static/assets/img/portfolio/unfolding-evolution.jpg",
-        'category':'paintings'
+        'category':'graphicart'
     },
     {
         'url':"/static/assets/img/portfolio/wheel-of-fortune.jpg",
-        'category':'paintings'
+        'category':'photography'
     }
 ]
        
@@ -90,9 +90,9 @@ def gallery():
     if category == None:
         category = 'paintings'
         images = Image.query.filter_by(category=category).all()
-        return render_template('gallery.html',images=images)
+        return render_template('gallery.html',images=images,category=category)
     images = Image.query.filter_by(category=category).all()
-    return render_template('gallery.html',images=images)
+    return render_template('gallery.html',images=images,category=category)
 
 @app.route("/EZine")
 def e_zine():
