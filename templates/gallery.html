@@ -19,10 +19,10 @@
             <option value="" selected>Select a category</option>
             <option value="{{url_for('gallery',category='paintings')}}">Paintings</option>
             <option value="{{url_for('gallery',category='drawings')}}">Drawings</option>
-            <option value="{{url_for('gallery',category='collaborations')}}">collaborations</option>
-            <option value="{{url_for('gallery',category='other')}}">Other</option>
-            <option value="{{url_for('gallery',category='graphicart')}}">Graphic art</option>
+            <option value="{{url_for('gallery',category='graphicart')}}">Graphic Art</option>
             <option value="{{url_for('gallery',category='photography')}}">Photography</option>
+            <option value="{{url_for('gallery',category='collaborations')}}">Collabos</option>
+            <option value="{{url_for('gallery',category='other')}}">Other</option>
         </select>
     </div>
 
@@ -30,7 +30,7 @@
         {%for image in images[:8]%}
         
             <div class="col-6 col-md-3 col-sm-6 mb-2">
-            <img src="{{'/static/assets/img/gallery/'+image.image_url}}" alt="" align='center' width="150" height="150"> 
+            <img src="{{'/static/assets/img/gallery/'+image.image_url}}" alt=" align='center' width="150" height="150"> 
             </div>
         {%endfor%}
     </div>

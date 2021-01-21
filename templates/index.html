@@ -103,17 +103,19 @@
 </header>
 <!-- Portfolio Section-->
 <section class="page-section portfolio" id="portfolio">
-    <div class="container">
+    <div class="container ">
         <!-- Portfolio Section Heading-->
         <h2 class="page-section-heading text-center text-uppercase text-white mb-3">Portfolio</h2>
         <!-- Portfolio Grid Items-->
+        <div class="row p-3">
         {%for image in images%} 
         <a href="{{url_for('gallery' ,category=image.category)}}">
             <div class=" col-lg-4 col-md-5 col-sm-3 d-inline-flex p-2">
-                <img class="portfolio-img rounded" src="{{image.url}}" alt="" width="100%" height="50%"/>
+                <img class="portfolio-img rounded" src="{{image.url}}" alt="" width="150px" height="150px"/>
             </div> 
         </a>  
         {%endfor%}
+      </div>
     </div>
 </section>
 <!-- About Section-->
@@ -125,13 +127,16 @@
         <!-- About Section Content-->
         <div class="row">
             <div class="col-lg-4 ml-auto">
-                <p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes
-                    the complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets
-                    for easy customization.</p>
+                <p class="lead"><h3>UNIVERSAL MIND</h3></p>
             </div>
             <div class="col-lg-4 mr-auto">
-                <p class="lead">You can create your own custom avatar for the masthead, change the icon in the dividers,
-                    and add your email address to the contact form to make it fully functional!</p>
+                <p class="lead">Robles creates art reflecting universal consciousness: Evolution of human consciousness within its universal context. The symbolic universe he has created is a cultural synthesis echoing both the past and the future. Stretching our imagination by challenging us to look deeper; beneath the surface, into the Soul. </p>
+            </div>
+            <div class="col-lg-4 mr-auto">
+                <p class="lead"><h3>Background</h3></p>
+                <p class="lead">Robles is born in Suriname, the most forested and one of the most culturally divers counties on earth. After living in the Netherlands, Germany and the US, Robles at the age of twenty moves from Fort Lauderdale, Florida back to the Netherlands, settling in Amsterdam, where he currently resides. 
+                In 1993 he makes his solo debut with exhibitions at two galleries in Amsterdam's Canal- and Jordan district. Next to in the Netherlands, his work has been exhibited in several galleries and art shows in Spain, Italy the US and is represented in various art collections. </p>
+        
             </div>
         </div>
         <!-- About Section Button
