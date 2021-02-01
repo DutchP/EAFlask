@@ -40,29 +40,31 @@ class DevelopmentConfig(Config):
 # index images
 IMAGES = [
     {
-        'url':"/static/assets/img/portfolio/sandex.jpg",
+        'url':"/static/assets/img/portfolio-preview-pix/paintings.jpg",
         'category':'paintings'
     },
     {
-        'url':"/static/assets/img/portfolio/pathfinder.jpg",
+        'url':"/static/assets/img/portfolio-preview-pix/drawings.jpg",
         'category':'drawings'
     },
     {
-        'url':"/static/assets/img/portfolio/metal-secrets.jpg",
+        'url':"/static/assets/img/portfolio-preview-pix/collabos.jpg",
         'category':'collaborations'
     },
     {
-        'url':"/static/assets/img/portfolio/synchonosity.jpg",
+        'url':"/static/assets/img/portfolio-preview-pix/other.jpg",
         'category':'other'
     },
     {
-        'url':"/static/assets/img/portfolio/unfolding-evolution.jpg",
+        'url':"/static/assets/img/portfolio-preview-pix/graphic-art.jpg",
         'category':'graphicart'
     },
     {
-        'url':"/static/assets/img/portfolio/wheel-of-fortune.jpg",
+        'url':"/static/assets/img/portfolio-preview-pix/photography.jpg",
         'category':'photography'
     }
+
+    
 ]
        
 def allowed_image(filename):
@@ -80,7 +82,7 @@ def allowed_image(filename):
 @app.route("/")
 def index():
     ''' Index route'''
-    return render_template('index.html', Title='Home',images=IMAGES)
+    return render_template('index.html', Title='Evert A. Robles Art',images=IMAGES)
 
 
 @app.route('/gallery',methods=['GET'])
