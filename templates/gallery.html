@@ -26,11 +26,17 @@
         </select>
     </div>
 
+    <p><div class="thumbnail">
+        <img src="static/assets/img/about/profile-blue.png" style="width:100%">
+      </div>
+
     <div class="row p-2">
         {%for image in images[:8]%}
         
             <div class="col-6 col-md-3 col-sm-6 mb-2">
-            <img src="{{'/static/assets/img/gallery/'+image.image_url}}" alt=" align='center'"width="210" height="mr-auto"> 
+                <div class="thumbnail"> 
+            <img src="{{'/static/assets/img/gallery/'+image.image_url}}" style="width:100%"> 
+                </div>
             </div>
         {%endfor%}
     </div>

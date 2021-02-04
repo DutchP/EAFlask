@@ -14,7 +14,7 @@
 
 /* Declare heights because of positioning of img element */
 .carousel-item {
-  height: 32rem;
+  height: 36rem;
 }
 .carousel-item > img {
   position: absolute;
@@ -143,15 +143,19 @@
         <!-- Portfolio Section Heading-->
         <h2 class="page-section-heading text-center text-uppercase text-white mb-3">Portfolio</h2>
         <!-- Portfolio Grid Items-->
-
-        
+ 
         <div class="row p-3">
         {%for image in images%} 
         <a href="{{url_for('gallery' ,category=image.category)}}">
             <div class="col-6 col-md-3 col-sm-6 mb-2">
-                <img class="rounded-circle" src="{{image.url}}" width="330" height="330">
+               <div class="img-responsive"> 
+                 <img class="rounded-circle" src="{{image.url}}" width="">
+               </div>  
             </div> 
-        </a>  
+        </a>   
+       
+        
+
         {%endfor%}
       </div>
     </div>
